@@ -5,6 +5,16 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule: # Set the cron for MidNight IST ---UTC
+   - cron: "30 18 * * *"
+  workflow_dispatch:
+    inputs:
+      env:
+       description: "Environment"
+       type: choice
+       options: [qa,uat,dev]
+       default: qa
+       required: true
 
 jobs:
   test:
@@ -22,32 +32,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Debug Step 1 - Verify project resources
-      - name: Verify Project Resources
-        run: |
-          echo "Current Directory:"
-          pwd
-
-          echo "========================================"
-          echo "Contents of src/test/resources"
-          echo "========================================"
-          find src/test/resources -type f
-
-      # Debug Step 2 - Compile test resources
-      - name: Compile Test Resources
-        run: mvn test-compile
-
-      # Debug Step 3 - Verify copied resources
-      - name: Verify Copied Resources
-        run: |
-          echo "========================================"
-          echo "Contents of target/test-classes"
-          echo "========================================"
-          find target/test-classes -type f
-
       # Execute Tests
       - name: Execute Test Automation Framework
-        run: mvn clean test -DsuiteXmlFile=testng.xml -Denv=qa
+        run: mvn clean test -DsuiteXmlFile=testng.xml -Denv="${{ github.event.inputs.env }}"
 
       # Upload Surefire Report
       - name: Upload Surefire Report
