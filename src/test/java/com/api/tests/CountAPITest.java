@@ -6,15 +6,13 @@ import static com.api.utils.ConfigManager.getProperty;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-import java.io.IOException;
-
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 public class CountAPITest {
 	
 	@Test
-	public void verifyCountAPIResponse() throws IOException {
+	public void verifyCountAPIResponse() {
 		
 		given().baseUri(getProperty("BASE_URI"))
 		       .and()
@@ -39,7 +37,7 @@ public class CountAPITest {
 	}
 	
 	@Test
-	public void countAPITest_MissingAuthToken() throws IOException {
+	public void countAPITest_MissingAuthToken() {
 		
 		given().baseUri(getProperty("BASE_URI"))
 		       .and()

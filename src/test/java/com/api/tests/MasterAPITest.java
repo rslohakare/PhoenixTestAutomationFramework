@@ -1,24 +1,20 @@
 package com.api.tests;
 
-import org.codehaus.groovy.runtime.callsite.PogoGetPropertySite;
+import static com.api.utils.AuthTokenProvider.getToken;
+import static com.api.utils.ConfigManager.getProperty;
+import static io.restassured.RestAssured.given;
+
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
-import static com.api.utils.AuthTokenProvider.*;
-import static com.api.utils.ConfigManager.*;
 
-import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
-
-import static io.restassured.RestAssured.*;
-
-import java.io.IOException;
 
 public class MasterAPITest {
 	
 	@Test
-	public void masterAPITest() throws IOException {
+	public void masterAPITest() {
 		
 		given().baseUri(getProperty("BASE_URI"))
 		      .and()
@@ -46,7 +42,7 @@ public class MasterAPITest {
 	}
 	
 	@Test
-	public void invalidTokenMasterAPIRequest() throws IOException {
+	public void invalidTokenMasterAPIRequest() {
 		
 		given().baseUri(getProperty("BASE_URI"))
 	      .and()

@@ -48,9 +48,9 @@ public class ConfigManager {
 		}
 	}
 
-	public static String getProperty(String key) throws IOException {
+	public static String getProperty(String key) {
 
-		return prop.getProperty("BASE_URI");
+		return prop.getProperty(key);
 
 	}
 

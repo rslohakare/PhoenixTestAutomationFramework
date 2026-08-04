@@ -3,8 +3,6 @@ package com.api.tests;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
 
-import java.io.IOException;
-
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
@@ -20,7 +18,7 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 public class UserDetailsAPITest {
 	
 	@Test
-	public void userDetailsAPITest() throws IOException {
+	public void userDetailsAPITest()  {
 		
 
 		

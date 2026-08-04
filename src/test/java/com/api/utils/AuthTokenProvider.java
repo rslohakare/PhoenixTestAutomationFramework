@@ -3,13 +3,11 @@ package com.api.utils;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import java.io.IOException;
-
 import static com.api.constant.Role.*;
 
 import com.api.constant.Role;
 import com.api.pojo.UserCredentials;
-
+ 
 import io.restassured.http.ContentType;
 
 public class AuthTokenProvider {
@@ -18,7 +16,7 @@ public class AuthTokenProvider {
 
 	}
 
-	public static String getToken(Role role) throws IOException {
+	public static String getToken(Role role) {
 		// TODO Auto-generated method stub
 		
 		UserCredentials userCredentials=null;
