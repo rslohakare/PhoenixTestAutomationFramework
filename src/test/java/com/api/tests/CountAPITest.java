@@ -9,24 +9,19 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import com.api.utils.SpecUtils;
+
 public class CountAPITest {
 	
 	@Test
 	public void verifyCountAPIResponse() {
 		
-		given().baseUri(getProperty("BASE_URI"))
-		       .and()
-		       .header("Authorization",getToken(FD))
-		       .log().uri()
-		       .log().method()
-		       .log().headers()
+		given().spec(SpecUtils.requestSpecWithAuth(FD))
 		       .when()
 		       .get("/dashboard/count")
 		       .then()
-		       .log().all()
-		       .statusCode(200)
+		       .spec(SpecUtils.responseSpec_OK())
 		       .body("message", Matchers.equalTo("Success"))
-		       .time(Matchers.lessThan(1000L))
 		       .body("data", Matchers.notNullValue())
 		       .body("data.size()", Matchers.equalTo(3))
 		       .body("data.count", Matchers.everyItem(Matchers.greaterThanOrEqualTo(0)))
@@ -39,16 +34,12 @@ public class CountAPITest {
 	@Test
 	public void countAPITest_MissingAuthToken() {
 		
-		given().baseUri(getProperty("BASE_URI"))
-		       .and()
-		       .log().uri()
-		       .log().method()
-		       .log().headers()
+		given()
+		       .spec(SpecUtils.requestSpec())
 		       .when()
 		       .get("/dashboard/count")
 		       .then()
-		       .log().all()
-		       .statusCode(401);
+		       .spec(SpecUtils.responseSpec_TEXT(401));
 		       
 		
 		
