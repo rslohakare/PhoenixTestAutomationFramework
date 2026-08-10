@@ -46,6 +46,16 @@ public class ConfigManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Loading resource: " + path);
+
+		ClassLoader cl = Thread.currentThread().getContextClassLoader();
+
+		System.out.println("ClassLoader = " + cl);
+
+		InputStream input1 = cl.getResourceAsStream(path);
+
+		System.out.println("InputStream = " + input1);
 	}
 
 	public static String getProperty(String key) {
