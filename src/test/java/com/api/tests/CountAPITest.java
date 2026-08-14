@@ -13,9 +13,8 @@ import com.api.utils.SpecUtils;
 
 public class CountAPITest {
 	
-	@Test
+	@Test(description="Verify if the Count API is giving correct response",groups={"api","regression","smoke"})
 	public void verifyCountAPIResponse() {
-		
 		given().spec(SpecUtils.requestSpecWithAuth(FD))
 		       .when()
 		       .get("/dashboard/count")
@@ -31,7 +30,7 @@ public class CountAPITest {
 			
 	}
 	
-	@Test
+	@Test(description="Verify if the Count API is giving correct response",groups={"api","negetive","regression","smoke"})
 	public void countAPITest_MissingAuthToken() {
 		
 		given()
