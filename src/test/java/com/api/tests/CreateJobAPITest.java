@@ -6,7 +6,15 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
+
+import com.api.constant.Model;
+import com.api.constant.OEM;
+import com.api.constant.Platform;
+import com.api.constant.Problem;
+import com.api.constant.Product;
 import com.api.constant.Role;
+import com.api.constant.ServiceLocation;
+import com.api.constant.Warranty_Status;
 import com.api.pojo.CreateJobPayLoad;
 import com.api.pojo.Customer;
 import com.api.pojo.CustomerAddress;
@@ -17,7 +25,7 @@ import com.api.utils.SpecUtils;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
 
-public class CreateJobAPIRequest {
+public class CreateJobAPITest {
 
 	@Test
 	public void createJobAPITest() {
@@ -27,19 +35,24 @@ public class CreateJobAPIRequest {
 		CustomerAddress customerAddress = new CustomerAddress("D 404", "Sai Palace", "Shegehalli", "Roll mall",
 				"Bangaluru", "411039", "India", "KA");
 
-		CustomerProduct customerProduct = new CustomerProduct(DateTimeUtil.getTimeWithDaysAgo(10), "846833927245272",
-				"846833927245272", "846833927245272", DateTimeUtil.getTimeWithDaysAgo(10), 1, 1);
+		CustomerProduct customerProduct = new CustomerProduct(DateTimeUtil.getTimeWithDaysAgo(10), "846833927545276",
+				"846833927245256"
+				+ "", "846833927245276", DateTimeUtil.getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(),
+				Model.NEXUS_2_BLUE.getCode());
 
-		Problems problems = new Problems(1, "Battery issue");
+		Problems problems = new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(), "Battery issue");
+
 		List<Problems> problemsList = new ArrayList<Problems>();
 		problemsList.add(problems);
 
-		CreateJobPayLoad createJobPayload = new CreateJobPayLoad(0, 2, 1, 1, customer, customerAddress, customerProduct,
-				problemsList);
+		CreateJobPayLoad createJobPayload = new CreateJobPayLoad(ServiceLocation.SERVICELOCATION_A.getCode(),
+				Platform.FRONT_DESK.getCode(), Warranty_Status.IN_WARRANTY.getCode(), OEM.GOOGLE.getCode(), customer,
+				customerAddress, customerProduct, problemsList);
 
 		given().spec(SpecUtils.requestSpecWithAuth(Role.FD, createJobPayload)).when().post("/job/create").then()
 				.spec(SpecUtils.responseSpec_OK())
-				.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/CreateJobAPIRequestSchema.json"))
+				.body(JsonSchemaValidator
+						.matchesJsonSchemaInClasspath("response-schema/CreateJobAPIRequestSchema.json"))
 				.body("message", Matchers.equalTo("Job created successfully. "))
 				.body("data.mst_service_location_id", Matchers.equalTo(1))
 				.body("data.job_number", Matchers.startsWith("JOB_"));
