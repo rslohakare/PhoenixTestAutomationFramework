@@ -1,7 +1,5 @@
 package com.api.tests;
 
-import static com.api.utils.AuthTokenProvider.getToken;
-import static com.api.utils.ConfigManager.getProperty;
 import static io.restassured.RestAssured.given;
 
 import org.hamcrest.Matchers;
@@ -14,7 +12,7 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class MasterAPITest {
 	
-	@Test
+	@Test(description="Verify if the Master API is giving correct response",groups={"api","regression","smoke"})
 	public void masterAPITest() {
 		
 		given()
@@ -36,7 +34,7 @@ public class MasterAPITest {
 		      
 	}
 	
-	@Test
+	@Test(description="Verify if the Master API is giving correct status code invalid token",groups={"api","negetive","regression","smoke"})
 	public void invalidTokenMasterAPIRequest() {
 		
 		given()

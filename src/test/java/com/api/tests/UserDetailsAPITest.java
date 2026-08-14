@@ -11,10 +11,9 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class UserDetailsAPITest {
 	
-	@Test
+	@Test(description="Verify if the Userdetails API response is shown correctly",groups={"api","regression","smoke"})
 	public void userDetailsAPITest()  {
 	
-		
 		given().spec(SpecUtils.requestSpecWithAuth(FD))
 		       .when()
 		       .get("userdetails")
