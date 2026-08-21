@@ -3,11 +3,8 @@ package com.demo.csv;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
 
 import com.opencsv.CSVReader;
-import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvException;
 
 public class ReadCSVFile_MapToPOJO {
@@ -21,14 +18,14 @@ public class ReadCSVFile_MapToPOJO {
 
 		//write the code to Map the CSV to POJO
 		
-		CsvToBean<UserPOJO> csvToBean=new CsvToBeanBuilder(csvReader)
-				                          .withType(UserPOJO.class)
-				                          .withIgnoreEmptyLine(true)
-				                          .build();
+//		CsvToBean<UserPOJO> csvToBean=new CsvToBeanBuilder(csvReader)
+//				                          .withType(UserPOJO.class)
+//				                          .withIgnoreEmptyLine(true)
+//				                          .build();
+//		
+//		List<UserPOJO> userList=csvToBean.parse();
 		
-		List<UserPOJO> userList=csvToBean.parse();
-		
-		System.out.println(userList.get(0).getUsername());
+		//System.out.println(userList.get(0).getUsername());
 		
 		
 		
