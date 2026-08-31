@@ -2,16 +2,16 @@ package com.dataproviders.api.bean;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class UserPOJO {
+public class UserBean {
 	@CsvBindByName(column = "username")
 	private String x;
 	@CsvBindByName(column = "password")
 	private String y;
 
-	public UserPOJO() {
+	public UserBean() {
 	}
 
-	public UserPOJO(String username, String password) {
+	public UserBean(String username, String password) {
 		super();
 		this.x = username;
 		this.y = password;

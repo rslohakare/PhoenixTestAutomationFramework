@@ -3,9 +3,10 @@ package com.api.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 import java.util.List;
 
-import com.dataproviders.api.bean.UserPOJO;
+import com.dataproviders.api.bean.UserBean;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -24,19 +25,19 @@ public class CSVReaderUtil {
 
 	}
 
-	public static void loadCSV(String pathOFCSVFile) throws IOException, CsvException {
+	public static Iterator<UserBean> loadCSV(String pathOFCSVFile) {
 
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathOFCSVFile);
 		InputStreamReader isr = new InputStreamReader(is);
 
 		CSVReader csvReader = new CSVReader(isr);
 
-		CsvToBean<UserPOJO> csvToBean = new CsvToBeanBuilder(csvReader).withType(UserPOJO.class)
+		CsvToBean<UserBean> csvToBean = new CsvToBeanBuilder(csvReader).withType(UserBean.class)
 				.withIgnoreEmptyLine(true).build();
 
-		List<UserPOJO> userList = csvToBean.parse();
+		List<UserBean> userList = csvToBean.parse();
 
-		System.out.println(userList.get(0).getUsername());
+		return userList.iterator();
 
 	}
 
