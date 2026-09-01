@@ -25,19 +25,35 @@ public class CSVReaderUtil {
 
 	}
 
-	public static Iterator<UserBean> loadCSV(String pathOFCSVFile) {
+//	public static Iterator<UserBean> loadCSV(String pathOFCSVFile) {
+//
+//		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathOFCSVFile);
+//		InputStreamReader isr = new InputStreamReader(is);
+//
+//		CSVReader csvReader = new CSVReader(isr);
+//
+//		CsvToBean<UserBean> csvToBean = new CsvToBeanBuilder(csvReader).withType(UserBean.class)
+//				.withIgnoreEmptyLine(true).build();
+//
+//		List<UserBean> userList = csvToBean.parse();
+//
+//		return userList.iterator();
+//
+//	}
+
+	public static <T> Iterator<T> loadCSV(String pathOFCSVFile, Class<T> bean) {
 
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathOFCSVFile);
 		InputStreamReader isr = new InputStreamReader(is);
 
 		CSVReader csvReader = new CSVReader(isr);
 
-		CsvToBean<UserBean> csvToBean = new CsvToBeanBuilder(csvReader).withType(UserBean.class)
-				.withIgnoreEmptyLine(true).build();
+		CsvToBean<T> csvToBean = new CsvToBeanBuilder(csvReader).withType(bean).withIgnoreEmptyLine(true)
+				.build();
 
-		List<UserBean> userList = csvToBean.parse();
+		List<T> list = csvToBean.parse();
 
-		return userList.iterator();
+		return list.iterator();
 
 	}
 
