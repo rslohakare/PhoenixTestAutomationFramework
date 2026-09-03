@@ -59,15 +59,19 @@ public class FakerDataGenerator {
 	}
 
 	private static List<Problems> generateFakeProblemsList() {
-
-		int randomIndex = RANDOM.nextInt(validProblemsIds.length);
-		String fakeRemark = faker.lorem().sentence(5);
-		Problems problem = new Problems(validProblemsIds[randomIndex], fakeRemark);
-
-		System.out.println(problem);
-
+		int count = RANDOM.nextInt(3) + 1;
+		int randomIndex;
+		String fakeRemark;
+		Problems problem;
 		List<Problems> problemList = new ArrayList<Problems>();
-		problemList.add(problem);
+		for (int i = 1; i <= count; i++) {
+			// Generating random problem id and adding to list
+			randomIndex = RANDOM.nextInt(validProblemsIds.length);
+			fakeRemark = faker.lorem().sentence(5);
+			problem = new Problems(validProblemsIds[randomIndex], fakeRemark);
+			System.out.println(problem);
+			problemList.add(problem);
+		}
 		return problemList;
 	}
 
