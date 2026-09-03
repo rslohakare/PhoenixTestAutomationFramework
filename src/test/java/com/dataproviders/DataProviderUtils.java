@@ -1,16 +1,12 @@
 package com.dataproviders;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.testng.annotations.DataProvider;
 
 import com.api.pojo.CreateJobPayLoad;
 import com.api.utils.CSVReaderUtil;
-import com.api.utils.CreateJobBeanMapper;
 import com.api.utils.FakerDataGenerator;
-import com.dataproviders.api.bean.CreateJobBean;
 import com.dataproviders.api.bean.UserBean;
 
 public class DataProviderUtils {
@@ -23,8 +19,10 @@ public class DataProviderUtils {
 
 	@DataProvider(name = "CreateJobAPIFakerDataProvider", parallel = true)
 	public static Iterator<CreateJobPayLoad> createJobFakeDataProvider() {
+		String fakerCount = System.getProperty("fakerCount", "5");
+		int fakerCountInt = Integer.parseInt(fakerCount);
 
-		Iterator<CreateJobPayLoad> payloadIterator = FakerDataGenerator.generateFakeCreateJobData(5);
+		Iterator<CreateJobPayLoad> payloadIterator = FakerDataGenerator.generateFakeCreateJobData(fakerCountInt);
 		return payloadIterator;
 	}
 
