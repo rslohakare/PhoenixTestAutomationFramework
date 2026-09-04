@@ -1,0 +1,130 @@
+[{
+    "mst_service_location_id": 0,
+    "mst_platform_id": 2,
+    "mst_warrenty_status_id": 1,
+    "mst_oem_id": 2,
+    "customer": {
+        "first_name": "Marcos",
+        "last_name": "Graham",
+        "mobile_number": "409-912-9222",
+        "mobile_number_alt": "",
+        "email_id": "Fredrick.Towne@gmail.com",
+        "email_id_alt": ""
+    },
+    "customer_address": {
+        "flat_number": "101",
+        "apartment_name": "Sai garden",
+        "street_name": "Hoskote Road",
+        "landmark": "Roll mall",
+        "area": "Whitefield",
+        "pincode": "411011",
+        "country": "India",
+        "state": "Karnataka"
+    },
+    "customer_product": {
+        "dop": "2026-06-01T00:00:00.000Z",
+        "serial_number": "664589123493382",
+        "imei1": "664589123493382",
+        "imei2": "664589123493382",
+        "popurl": "2026-06-01T00:00:00.000Z",
+        "product_id": 3,
+        "mst_model_id": 3
+    },
+    "problems": [
+        {
+            "id": 6,
+            "remark": "Battery Issue"
+        }
+    ]
+},
+{
+    "mst_service_location_id": 0,
+    "mst_platform_id": 2,
+    "mst_warrenty_status_id": 1,
+    "mst_oem_id": 2,
+    "customer": {
+        "first_name": "Marcos",
+        "last_name": "Graham",
+        "mobile_number": "409-912-9222",
+        "mobile_number_alt": "",
+        "email_id": "Fredrick.Towne@gmail.com",
+        "email_id_alt": ""
+    },
+    "customer_address": {
+        "flat_number": "101",
+        "apartment_name": "Sai garden",
+        "street_name": "Hoskote Road",
+        "landmark": "Roll mall",
+        "area": "Whitefield",
+        "pincode": "411011",
+        "country": "India",
+        "state": "Karnataka"
+    },
+    "customer_product": {
+        "dop": "2026-06-01T00:00:00.000Z",
+        "serial_number": "1114589123493382",
+        "imei1": "1114589123493382",
+        "imei2": "1114589123493382",
+        "popurl": "2026-06-01T00:00:00.000Z",
+        "product_id": 3,
+        "mst_model_id": 3
+    },
+    "problems": [
+        {
+            "id": 6,
+            "remark": "Battery Issue"
+        },
+		{
+		            "id": 5,
+		            "remark": "Heat Issue"
+		        }
+    ]
+},
+{
+    "mst_service_location_id": 0,
+    "mst_platform_id": 2,
+    "mst_warrenty_status_id": 1,
+    "mst_oem_id": 2,
+    "customer": {
+        "first_name": "Marcos",
+        "last_name": "Graham",
+        "mobile_number": "409-912-9222",
+        "mobile_number_alt": "",
+        "email_id": "Fredrick.Towne@gmail.com",
+        "email_id_alt": ""
+    },
+    "customer_address": {
+        "flat_number": "101",
+        "apartment_name": "Sai garden",
+        "street_name": "Hoskote Road",
+        "landmark": "Roll mall",
+        "area": "Whitefield",
+        "pincode": "411011",
+        "country": "India",
+        "state": "Karnataka"
+    },
+    "customer_product": {
+        "dop": "2026-06-01T00:00:00.000Z",
+        "serial_number": "22289123493382",
+        "imei1": "22289123493382",
+        "imei2": "22289123493382",
+        "popurl": "2026-06-01T00:00:00.000Z",
+        "product_id": 3,
+        "mst_model_id": 3
+    },
+    "problems": [
+        {
+            "id": 6,
+            "remark": "Battery Issue"
+        },
+		{
+		            "id": 2,
+		            "remark": "overheating Issue"
+		        },
+				{
+				            "id": 1,
+				            "remark": "charging Issue"
+				        }
+    ]
+}
+]
