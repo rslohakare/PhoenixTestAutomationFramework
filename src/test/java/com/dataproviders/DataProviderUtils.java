@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import com.api.pojo.CreateJobPayLoad;
 import com.api.pojo.UserCredentials;
 import com.api.utils.CSVReaderUtil;
+import com.api.utils.ExcelReaderUtil2;
 import com.api.utils.FakerDataGenerator;
 import com.api.utils.JsonReaderUtil;
 import com.dataproviders.api.bean.UserBean;
@@ -34,5 +35,10 @@ public class DataProviderUtils {
 	@DataProvider(name = "CreateJobAPIJsonDataProvider", parallel = true)
 	public static Iterator<CreateJobPayLoad> CreateJobAPIJsonDataProvider() {
 		return JsonReaderUtil.loadJSON("testData/CreateJobAPIData.json", CreateJobPayLoad[].class);
+	}
+
+	@DataProvider(name = "LoginAPIExcelDataProvider", parallel = true)
+	public static Iterator<UserCredentials> LoginAPIExcelDataProvider() {
+		return ExcelReaderUtil2.loadtestData();
 	}
 }
