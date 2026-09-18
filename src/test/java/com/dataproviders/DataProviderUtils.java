@@ -1,14 +1,20 @@
 package com.dataproviders;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.testng.annotations.DataProvider;
 
 import com.api.pojo.CreateJobPayLoad;
 import com.api.pojo.UserCredentials;
 import com.api.utils.CSVReaderUtil;
+import com.api.utils.CreateJobBeanMapper;
+import com.api.utils.ExcelReaderUtil2;
 import com.api.utils.FakerDataGenerator;
 import com.api.utils.JsonReaderUtil;
+import com.database.dao.CreateJobPayloadDataDao;
+import com.dataproviders.api.bean.CreateJobBean;
 import com.dataproviders.api.bean.UserBean;
 
 public class DataProviderUtils {
@@ -34,5 +40,21 @@ public class DataProviderUtils {
 	@DataProvider(name = "CreateJobAPIJsonDataProvider", parallel = true)
 	public static Iterator<CreateJobPayLoad> CreateJobAPIJsonDataProvider() {
 		return JsonReaderUtil.loadJSON("testData/CreateJobAPIData.json", CreateJobPayLoad[].class);
+	}
+
+	@DataProvider(name = "LoginAPIExcelDataProvider", parallel = true)
+	public static Iterator<UserCredentials> LoginAPIExcelDataProvider() {
+		return ExcelReaderUtil2.loadtestData();
+	}
+
+	@DataProvider(name = "CreateJobAPIDBDataProvider", parallel = true)
+	public static Iterator<CreateJobPayLoad> CreateJobAPIDBDataProvider() {
+		List<CreateJobBean> beanList = CreateJobPayloadDataDao.getCreateJobPayLoadData();
+		List<CreateJobPayLoad> payloadList = new ArrayList<CreateJobPayLoad>();
+		for (CreateJobBean createJobBean : beanList) {
+			CreateJobPayLoad payload = CreateJobBeanMapper.mapper(createJobBean);
+			payloadList.add(payload);
+		}
+		return payloadList.iterator();
 	}
 }
